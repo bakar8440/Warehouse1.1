@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WEBSITE</title>
+        <link rel="stylesheet" href="port.css">
+        <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css" />
+        <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    </head>
+    <body>
+      <div class="background">
+     <nav>
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="#">MANU</a></li>
+            <li><a href="aboutus.html">ABOUT US</a></li>
+            <li><a href="#">CONTACT</a></li>
+            <button class="btn"><a href="login.html">LOGIN</a></button>
+            
+        </ul>
+     </nav>
+     <div class="content">
+        <h1>WAREHOUSE DESK</h1>
+        <P>BY MAKSUDA_SAMIA_NOWRIN<br>Efficient and Streamlined Inventory Management solutions, providing businesses with the tools to optimize stock levels, minimize costs, and enhance overall operational efficiency.</P>
+     </div>
+      </div>
+
+
+    <py-script>
+        import datetime
+
+x = datetime.datetime.now()
+
+print(x.year)
+print(x.strftime("%A"))
+
+itemCount = 0
+customer_count = 0
+Employee_count = 0
+customer_name = []
+customer_Mobile_Number = []
+customer_Address = []
+Employee_name = []
+Employee_Mobile_Number = []
+Employee_Address = []
+Employee_salary=[]
+Item_id = []  
+Item_name = []
+Item_price = []
+Item_manufacturingDate = []
+Item_expiryDate = []
+Item_Discount = []
+Item_quantity = []
+
+
+def EmployeeDetails():
+    print("Displaying Employee Details: ")
+    print("----------------------------------------------------------------------\n\n")
+    for i in range(Employee_count):
+        print("----------------------------------------------------------------------")
+        print(f"Employee No : {i + 1}:")
+        print(f"Employee Name : {Employee_name[i]}")
+        print(f"Employee Salary: {Employee_salary[i]}")
+        print(f"Employee Mobile Number: {Employee_Mobile_Number[i]}")
+        print(f"Employee Address Date: {Employee_Address[i]}")
+        print("----------------------------------------------------------------------")
+    print("----------------------------------------------------------------------\n\n")
+
+
+
+
+
+def displayItems():
+    print("----------------------------------------------------------------------\n\n")
+    print(" Displaying Items:")
+
+    for i in range(itemCount):
+        print("----------------------------------------------------------------------")
+        print(f"Item no  {i + 1}:")
+        print(f"Name: {Item_name[i]}")
+        print(f"Price: {Item_price[i]}")
+        print(f"Discount: {Item_Discount[i]}")
+        print(f"Manufacturing Date: {Item_manufacturingDate[i]}")
+        print(f"Expiry Date: {Item_expiryDate[i]}")
+        print(f"Quantity: {Item_quantity[i]}\n")
+        print("----------------------------------------------------------------------")
+
+    print("----------------------------------------------------------------------\n\n")         
+
+def placeOrder():
+    global itemCount
+    global customer_count
+
+    print("Placing Order:")
+    displayItems()
+
+    if itemCount == 0:
+        print("No items available for order.")
+        return
+
+    try:
+        item_index = int(input("Enter the item number you want to order: ")) - 1
+        if 0 <= item_index < itemCount:
+            quantity = int(input("Enter the quantity you want to order: "))
+            if 0 < quantity <= Item_quantity[item_index]:
+                total_price = (Item_price[item_index] -(Item_price[item_index]*(Item_Discount[i]/100)  ))*quantity
+                print(f"Order placed successfully!\nTotal Price: {total_price}")
+                customer_count += 1
+                customer_name.append(input("Enter your name: "))
+                customer_Mobile_Number.append(input("Enter your Mobile Number: "))
+                customer_Address.append(input("Enter your Address: "))
+                Item_quantity[item_index] -= quantity
+
+
+
+                print("Here is your Recipt \n\n")
+                print("----------------------------------------------------------------------")
+                print("----------------------------------------------------------------------\n\n")
+                print(
+                    f"Your  Name: {customer_name[i-1]}\n"
+                    f"Your Mobile Number: {customer_Mobile_Number[i-1]}\n"
+                    f"Your Address: {customer_Address[i-1]}\n"
+                    f"Your Order name : {Item_name [item_index-1] }\n"
+                    f"Total price : {total_price}\n"
+                    )                                            
+                print("----------------------------------------------------------------------")
+                print("----------------------------------------------------------------------\n\n")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            else:
+                print("Invalid quantity or insufficient stock.")
+        else:
+            print("Invalid item number.")
+    except ValueError:
+        print("Invalid input. Please enter a valid number.")
+
+
+def customerDetails():
+    global customer_count
+    global customer_name
+    global customer_Mobile_Number
+    global customer_Address
+
+    print("----------------------------------------------------------------------")
+    print("----------------------------------------------------------------------\n\n")
+    for i in range(customer_count):
+        print("----------------------------------------------------------------------")
+        print(f"Customer No: {i + 1}\n"
+              f"Customer Name: {customer_name[i]}\n"
+              f"Customer Mobile Number: {customer_Mobile_Number[i]}\n"
+              f"Customer Address: {customer_Address[i]}\n")
+        print("----------------------------------------------------------------------")
+    print("----------------------------------------------------------------------\n\n")
+
+
+def createItem():
+    global itemCount
+    global Item_name
+    global Item_price
+    global Item_Discount
+    global Item_manufacturingDate
+    global Item_expiryDate
+    global Item_quantity
+
+    a = int(input("How many items do you want to create?\n"))
+    for _ in range(a):
+        Item_name.append(input("Item Name: "))
+        Item_price.append(float(input("Item Price: ")))
+        Item_Discount.append(float(input("Item Discount: ")))
+        Item_manufacturingDate.append(input("Item Manufacturing Date (DD/MM/YYYY): "))
+        Item_expiryDate.append(input("Item Expiry Date (DD/MM/YYYY): "))
+        Item_quantity.append(int(input("Item Quantity: ")))
+
+        itemCount += 1
+        print("Item created successfully.\n")
+
+
+def queryItems():
+    global itemCount
+    global Item_name
+    global Item_price
+    global Item_manufacturingDate
+    global Item_expiryDate
+    global Item_Discount
+    global Item_quantity
+
+    print("Query Items:")
+    search_name = input("Enter the name of the item you want to search for: ")
+
+    found_items = []
+    for i in range(itemCount):
+        if search_name.lower() in Item_name[i].lower():
+            found_items.append(i)
+
+    if found_items:
+        print("Found Items:")
+        for i in found_items:
+            print(f"Item {i + 1}:")
+            print(f"Name: {Item_name[i]}")
+            print(f"Price: {Item_price[i]}")
+            print(f"Discount: {Item_Discount[i]}")
+            print(f"Manufacturing Date: {Item_manufacturingDate[i]}")
+            print(f"Expiry Date: {Item_expiryDate[i]}")
+            print(f"Quantity: {Item_quantity[i]}\n")
+    else:
+        print("No items found.")
+
+
+def modifyItem():
+    global itemCount
+    global Item_name
+    global Item_price
+    global Item_manufacturingDate
+    global Item_expiryDate
+    global Item_Discount
+    global Item_quantity
+
+    print("Modify Item:")
+    displayItems()
+
+    if itemCount == 0:
+        print("No items available for modification.")
+        return
+
+    try:
+        item_index = int(input("Enter the item number you want to modify: ")) - 1
+        if 0 <= item_index < itemCount:
+            print(f"Current details for Item {item_index + 1}:")
+            print(f"Name: {Item_name[item_index]}")
+            print(f"Price: {Item_price[item_index]}")
+            print(f"Discount: {Item_Discount[item_index]}")
+            print(f"Manufacturing Date: {Item_manufacturingDate[item_index]}")
+            print(f"Expiry Date: {Item_expiryDate[item_index]}")
+            print(f"Quantity: {Item_quantity[item_index]}\n")
+
+            Item_name[item_index] = input("Enter new Item Name: ")
+            Item_price[item_index] = float(input("Enter new Item Price: "))
+            Item_Discount[item_index] = float(input("Enter new Item Discount: "))
+            Item_manufacturingDate[item_index] = input("Enter new Item Manufacturing Date (DD/MM/YYYY): ")
+            Item_expiryDate[item_index] = input("Enter new Item Expiry Date (DD/MM/YYYY): ")
+            Item_quantity[item_index] = int(input("Enter new Item Quantity: "))
+
+            print("Item modified successfully.")
+        else:
+            print("Invalid item number.")
+    except ValueError:
+        print("Invalid input. Please enter a valid number.")
+
+
+def deleteItem():
+    global itemCount
+    global Item_name
+    global Item_price
+    global Item_manufacturingDate
+    global Item_expiryDate
+    global Item_Discount
+    global Item_quantity
+
+    print("Delete Item:")
+    displayItems()
+
+    if itemCount == 0:
+        print("No items available for deletion.")
+        return
+
+    try:
+        item_index = int(input("Enter the item number you want to delete: ")) - 1
+        if 0 <= item_index < itemCount:
+            confirmation = input(f"Are you sure you want to delete {Item_name[item_index]}? (yes/no): ").lower()
+            if confirmation == 'yes':
+                del Item_name[item_index]
+                del Item_price[item_index]
+                del Item_Discount[item_index]
+                del Item_manufacturingDate[item_index]
+                del Item_expiryDate[item_index]
+                del Item_quantity[item_index]
+
+                itemCount -= 1
+                print("Item deleted successfully.")
+            else:
+                print("Deletion canceled.")
+        else:
+            print("Invalid item number.")
+    except ValueError:
+        print("Invalid input. Please enter a valid number.")
+
+
+def main():
+    print("----------------------------------------------------------------------")
+    print("----------------------------------------------------------------------\n\n")
+    print("                     WAREHOUSE DESK SYSTEM                          \n\n")
+    print("----------------------------------------------------------------------")
+    print("----------------------------------------------------------------------\n\n")
+
+    while True:
+        print("Main Menu:\n\n")
+        print("1. Customer\n\n")
+        print("2. Administrator\n\n")
+        print("3. Employee\n\n")
+        print("4. Exit\n\n")
+        choice = int(input("Enter your choice: "))
+
+        if choice == 1:
+            while True:
+                print("Customer Menu:\n\n")
+                print("1. Display Items\n\n")
+                print("2. Place Order\n\n")
+                print("3. Back to Main Menu\n\n")
+                customerChoice = int(input("Enter your choice: "))
+
+                if customerChoice == 1:
+                    displayItems()
+                elif customerChoice == 2:
+                    placeOrder()
+                elif customerChoice == 3:
+                    break
+                else:
+                    print("Invalid choice\n")
+
+        elif choice == 2:
+            while True:
+                print("Administrator Menu:\n\n")
+                print("1. Create Item\n\n")
+                print("2. Display Items\n\n")
+                print("3. Query Items\n\n")
+                print("4. Modify Item\n\n")
+                print("5. Delete Item\n\n")
+                print("6. Customer Details\n\n")
+                print("7. Employee Details\n\n")
+                print("8. Back to Main Menu\n\n")
+                adminChoice = int(input("Enter your choice: "))
+
+                if adminChoice == 1:
+                    createItem()
+                elif adminChoice == 2:
+                    displayItems()
+                elif adminChoice == 3:
+                    queryItems()
+                elif adminChoice == 4:
+                    modifyItem()
+                elif adminChoice == 5:
+                    deleteItem()
+                elif adminChoice == 6:
+                    customerDetails()
+                elif adminChoice == 7:
+                    EmployeeDetails()
+                elif adminChoice == 8:
+                    break
+                else:
+                    print("Invalid choice\n")
+
+
+        elif choice ==3:
+           while True: 
+                print("Employee Menu:\n\n")
+                print("1.Attendence \n\n")
+                print("2.Salary\n\n")
+                print("3. Back to Main Menu\n\n")
+                adminChoice = int(input("Enter your choice: "))
+                if adminChoice == 1:
+                    Attendence()
+                elif adminChoice == 2:
+                    Salary()
+                elif adminChoice == 3:
+                    break
+                else :
+                     
+                     print("Invalid choice\n")
+           
+        
+
+
+        elif choice == 4:
+            print("Exiting the program. Goodbye!\n")
+            break
+
+        else:
+            print("Invalid choice\n")
+
+
+if __name__ == "__main__":
+    main()
+
+    </py-script>
+
+
+    </body>
+</html>
+
+
+

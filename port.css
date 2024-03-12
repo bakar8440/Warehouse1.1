@@ -1,0 +1,206 @@
+body{
+    margin : 0px;
+    padding: 0px;
+     box-sizing: border-box;
+ }
+ .background
+ {
+     width: 88%;
+     height: 150vh;
+     background-image: linear-gradient(rgba(9,0,77,0.65),rgba(9,0,77,0.65)) ,url(https://static.vecteezy.com/system/resources/previews/030/102/540/large_2x/an-empty-warehouse-with-large-windows-and-desks-ai-generated-free-photo.jpg);
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position:center;
+     padding: 10px 8%;
+ 
+ }
+ nav ul{
+     list-style: none;
+     width: 100%;
+     text-align: right;
+    
+ }
+ nav li{
+     display: inline-block;
+     margin: 20px 40px;
+ }
+ nav ul li a{
+     color:aliceblue;
+     text-decoration:none;
+ 
+ }
+
+.banner-content{
+    margin-top: 5%;
+    color:aliceblue;
+    width:auto;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+ .btn a {
+     color:black;
+     background-color:antiquewhite;
+     border-radius: 5px;
+     text-decoration: none;
+ }
+ 
+ .content{
+     margin-top: 14%;
+     color:aliceblue;
+     max-width: 620px;
+ }
+ .content h1{
+     font-weight:600 ;
+     line-height: 20px;
+     margin-bottom: 25px;
+ }
+ .info{
+     border: 4px solid white;
+    width: 350px;
+    padding: 25px;
+    border-radius: 10px;
+    background-color: transparent;
+    backdrop-filter: blur(5px);
+    position: relative;
+    height: 300px;
+ }
+ form{
+     margin-top: 20px;
+     display:flex;
+     flex-direction: column;
+     gap: 20px;
+     padding: 20px;
+ }
+ input[type="text"],
+ input[type="password"]{
+     padding: 10px;
+     border: 3px solid white;
+     width: 100%;
+     border-radius: 25px;
+     outline: none;
+     background-color: transparent;
+     color: white;
+ }
+ .reg{
+     position: relative;
+     display: flex;
+     align-items: center;
+ }
+ label{
+     position: absolute;
+     left: 10px;
+     color: white;
+ }
+ .remember_box{
+     display: flex;
+     align-items: center;
+     gap: 5px;
+     color: white;
+     justify-content: space-between;
+ }
+ .remember{
+     display: flex;
+     gap: 5px;
+     align-items: center;
+     color: white;
+ }
+ .btn1{
+     border: none;
+     padding: 10px;
+     border-radius: 50px;
+     cursor: pointer;
+ }
+ input:valid+label,
+ input:focus+label{
+     background-color: white;
+     color: black;
+     transform: translate(10px,-20px);
+     padding: 2px 5px;
+     font-size: 13px;
+     border-radius: 5px;
+     transition: .2s;
+ }
+ a{
+     color: white;
+ }
+ .signup{
+     text-align: center;
+     color: white;
+ }
+ .information{
+     border: 4px solid white;
+     width: 450px;
+     padding: 20px;
+     border-radius: 10px;
+     background-color: transparent;
+     backdrop-filter: blur(5px);
+     position: relative;
+     height: 550px;
+ }
+ .agree{
+     display: flex;
+    align-items: center;
+     color: white;
+ }
+ .login{
+     text-align: center;
+     color: white;
+ }
+ footer{
+     background-color:cadetblue ;
+     padding-top: 50px;
+ }
+ .contant{
+     width: 850px;
+     margin:auto;
+     display: flex;
+     justify-content: center;
+ }
+ h3{
+     font-size: 25px;
+     margin-bottom: 15px;
+     text-align: center;
+ }
+ .footer_container{
+     width: 33.33%;
+ }
+ .footer_container p{
+         width: 190px;
+         margin:auto;
+         padding: 5px;
+ }
+ .footer_container ul{
+     text-align: center;
+ }
+ .list{
+     padding: 0;
+ }
+ .list li{
+     width:auto;
+     text-align: center;
+     list-style-type: none;
+     padding: 7px;
+     position:relative;
+ }
+ .social_icons{
+     text-align: center;
+     padding: 0;
+ }
+ .social_icons li{
+     display: inline-block;
+     text-align: center;
+     padding: 5px;
+ }
+ .social_icons i{
+     color: aliceblue;
+     font-size: 25px;
+ 
+ }
+ .botom_bar{
+     background:burlywood;
+     text-align: center;
+     padding: 10px 0;
+     margin-top: 50px;
+ }
